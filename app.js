@@ -31,8 +31,11 @@ app.get('/all-animals', (req, res) => {
 });
 
 app.get('/animal-details/:animalId', (req, res) => {
-  res.render('animal-details.html.njk', { animal: stuffedAnimalData.elephant });
+  let {animalId} = req.params
+  res.render('animal-details.html.njk', { animal: getAnimalDetails(animalId) });
+
 });
+
 
 app.get('/add-to-cart/:animalId', (req, res) => {
   // TODO: Finish add to cart functionality
@@ -42,9 +45,39 @@ app.get('/add-to-cart/:animalId', (req, res) => {
   // - check if the desired animal id is in the cart, and if not, put it in
   // - increment the count for that animal id by 1
   // - redirect the user to the cart page
+let {animalId} = req.params
+let sess = req.session;
+
+console.log(sess);
+
+if (!sess.cart){
+     sess.cart = {};
+}
+console.log(sess.cart[animalId]);
+if (!sess.cart[animalId]){
+    sess.cart[animalId] = 0;
+}
+  sess.cart[animalId]++;
+  res.redirect('/cart');
 });
 
-app.get('/cart', (req, res) => {
+// app.get('/add-to-cart/:animalId', (req, res) => {
+//   const sess = req.session;
+//   const animalId = req.params.animalId;
+//   if (!sess.cart) {
+//     sess.cart = {};
+//   }
+
+//   if (!(animalId in sess.cart)) {
+//     sess.cart[animalId] = 0;
+//   }
+//   sess.cart[animalId] += 1;
+//   console.log(sess.cart);
+
+//   res.redirect('/cart');
+// });
+
+// app.get('/cart', (req, res) => {
   // TODO: Display the contents of the shopping cart.
 
   // The logic here will be something like:
@@ -63,8 +96,16 @@ app.get('/cart', (req, res) => {
   // Make sure your function can also handle the case where no cart has
   // been added to the session
 
-  res.render('cart.html.njk');
-});
+  // let cartItems = [];
+  // let totalAnimals = i;
+
+  // for (i = 0; i<cartItems.length; i++){
+  //   cartItems
+  // }
+
+
+//   res.render('cart.html.njk');
+// });
 
 app.get('/checkout', (req, res) => {
   // Empty the cart.
