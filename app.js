@@ -53,38 +53,52 @@ console.log(sess);
 if (!sess.cart){
      sess.cart = {};
 }
-console.log(sess.cart[animalId]);
+
 if (!sess.cart[animalId]){
     sess.cart[animalId] = 0;
 }
   sess.cart[animalId]++;
+  console.log(sess.cart[animalId]);
   res.redirect('/cart');
 });
 
-// app.get('/add-to-cart/:animalId', (req, res) => {
-//   const sess = req.session;
-//   const animalId = req.params.animalId;
-//   if (!sess.cart) {
-//     sess.cart = {};
-//   }
+//   // TODO: Display the contents of the shopping cart.
+//   // The logic here will be something like:
 
-//   if (!(animalId in sess.cart)) {
-//     sess.cart[animalId] = 0;
-//   }
-//   sess.cart[animalId] += 1;
-//   console.log(sess.cart);
+app.get('/cart', (req, res) => {
+  let sess = req.session;
 
-//   res.redirect('/cart');
-// });
+if (!sess.cart){
+    sess.cart = {};
+}
+console.log(sess);
+console.log("/cart hit");
+  let cart = sess.cart;
+  console.log(cart);
+  let arrAnimals = [];
+  let cartTotal = 0;
 
-// app.get('/cart', (req, res) => {
-  // TODO: Display the contents of the shopping cart.
+  for(let animal in cart){
+    console.log(cart, "hi");
+    const qty = sess.cart[animal]
+    console.log(animal);
 
-  // The logic here will be something like:
+    let animalData = getAnimalDetails(animal)
+    cartTotal+=qty*animalData.price
+    animalData.qty = qty
+    animalData.subTotalCost = qty*animalData.price
+    arrAnimals.push(animalData)
+
+    console.log(qty);
+    console.log(animalData);
+  }
+
+  res.render('cart.html.njk', {arrAnimals, cartTotal});
+});
 
   // - get the cart object from the session
   // - create an array to hold the animals in the cart, and a variable to hold the total
-  // cost of the order
+  //    cost of the order
   // - loop over the cart object, and for each animal id:
   //   - get the animal object by calling getAnimalDetails
   //   - compute the total cost for that type of animal
@@ -98,14 +112,11 @@ if (!sess.cart[animalId]){
 
   // let cartItems = [];
   // let totalAnimals = i;
-
   // for (i = 0; i<cartItems.length; i++){
   //   cartItems
   // }
 
 
-//   res.render('cart.html.njk');
-// });
 
 app.get('/checkout', (req, res) => {
   // Empty the cart.
