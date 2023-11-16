@@ -115,6 +115,10 @@ app.get('/logout', (req, res) => {
   res.render('index.html');
 });
 
+app.get('/back-to-shop', (req, res) => {
+  res.render('all-animals.html.njk');
+});
+
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}...`);
 });
