@@ -108,8 +108,16 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/process-login', (req, res) => {
-  res.render('login.html.njk');
+  for(let user of users){
+    console.log(users);
+    if (req.body.username === user.username && req.body.password === user.password){
+      res.redirect('/all-animals');
+      return;
+    }
+  }
+  res.render('login.html.njk', { message: 'Invalid username or password' });
 });
+
 
 app.get('/logout', (req, res) => {
   req.session.destroy((err) => {

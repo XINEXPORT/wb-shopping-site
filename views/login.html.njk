@@ -1,20 +1,26 @@
 {% extends 'base.html.njk' %}
 
 {% block body %}
-<h2>Login</h2>
 
-<form action= "/process-login">
-        <div class = "users">
-        <label>Username</label>
+
+<form class "form-signin" action= "/process-login" method = "POST">
+        <h2 class="form-signin-head">Login</h2>
+
+        <div>
+        <label for="email">Username</label>
         <input type = "text" name = "username"/>
         </div>
 
-        <div class = "users">
-        <label>Password</label>
+        <div>
+        <label for "password">Password</label>
         <input type = "text" name = "password"/>
         </div>
 
-        <button type="submit">Login</button>
+        <div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        </div>
+
+        <p id='invalid-message'>{{ message }}</p>
 </form>
 
 {% endblock %}

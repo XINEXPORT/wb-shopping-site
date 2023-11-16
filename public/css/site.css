@@ -22,3 +22,7 @@ div.summary img {
   max-width: 330px;
   margin: 5em auto 0 auto; /* TRBL */
 }
+
+#invalid-message{
+  color: red;
+}
