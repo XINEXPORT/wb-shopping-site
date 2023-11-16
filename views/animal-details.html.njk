@@ -1,19 +1,21 @@
 {% extends 'base.html.njk' %}
 
 {% block body %}
-<h2>{{ animal.name }}</h2>
+<h2 id = "animal-name">{{ animal.name }}</h2>
 
-<img src="{{ animal.image_url }}" />
+<div id = "animal-pic"><img src="{{ animal.image_url }}" /></div>
 
-<h3>Price: ${{ animal.price.toFixed(2) }}</h3>
+<h3 id = "price" >Price: ${{ animal.price.toFixed(2) }}</h3>
 
-<h3>Product details:</h3>
+<h3 id = "product">Product details:</h3>
 
+<div id= "animal-details">
 <ul>
-  <li>Color: {{ animal.color }}</li>
+  <li id="bullet">Color: {{ animal.color }}</li>
   <li>Size: {{animal.size}}</li>
 </ul>
 
 <a class="btn btn-primary" href="/add-to-cart/{{ animal.animal_id }}">Add to cart</a>
+</div>
 
 {% endblock %}

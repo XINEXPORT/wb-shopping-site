@@ -7,7 +7,6 @@
       <th>Animal Name</th>
       <th>Quantity</th>
       <th>Price</th>
-      <th>Total</th>
     </tr>
   </thead>
   <tbody>
@@ -15,14 +14,13 @@
     <tr>
       <td>{{animal.name}}</td>
       <td>{{animal.qty}}</td>
-      <td>{{animal.price}}</td>
-      <td>{{animal.totalCost}}</td>
+      <td>${{animal.price}}</td>
     </tr>
   {% endfor %}
   </tbody>
 </table>
 
-<h3>Total: $ {{cartTotal}} </h3>
+<h3>Total: ${{cartTotal}} </h3>
 
 <a href="/checkout" class="btn btn-large btn-primary">Check Out</a>
 <a class ="btn btn-primary" href="/all-animals/">Back to Shop</a>

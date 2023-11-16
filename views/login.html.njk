@@ -3,19 +3,19 @@
 {% block body %}
 
 <form class="form-signin" action= "/process-login" method = "POST">
-        <h2 class="form-signin-head">Login</h2>
+        <h2 id="form-signin-head">Login</h2>
 
-        <div>
+        <div id="username">
         <label for="email">Username</label>
         <input type = "text" name = "username"/>
         </div>
 
-        <div>
+        <div id= "password">
         <label for "password">Password</label>
         <input type = "text" name = "password"/>
         </div>
 
-        <div>
+        <div id = "login">
         <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
         </div>
 
