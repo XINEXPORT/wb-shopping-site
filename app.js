@@ -96,27 +96,6 @@ console.log("/cart hit");
   res.render('cart.html.njk', {arrAnimals, cartTotal});
 });
 
-  // - get the cart object from the session
-  // - create an array to hold the animals in the cart, and a variable to hold the total
-  //    cost of the order
-  // - loop over the cart object, and for each animal id:
-  //   - get the animal object by calling getAnimalDetails
-  //   - compute the total cost for that type of animal
-  //   - add this to the order total
-  //   - add quantity and total cost as properties on the animal object
-  //   - add the animal object to the array created above
-  // - pass the total order cost and the array of animal objects to the template
-
-  // Make sure your function can also handle the case where no cart has
-  // been added to the session
-
-  // let cartItems = [];
-  // let totalAnimals = i;
-  // for (i = 0; i<cartItems.length; i++){
-  //   cartItems
-  // }
-
-
 
 app.get('/checkout', (req, res) => {
   // Empty the cart.
@@ -125,13 +104,15 @@ app.get('/checkout', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-  // TODO: Implement this
-  res.send('Login has not been implemented yet!');
+  res.render('login.html.njk');
 });
 
 app.post('/process-login', (req, res) => {
-  // TODO: Implement this
-  res.send('Login has not been implemented yet!');
+  res.render('login.html.njk');
+});
+
+app.get('/logout', (req, res) => {
+  res.render('index.html');
 });
 
 app.listen(port, () => {
