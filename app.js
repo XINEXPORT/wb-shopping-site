@@ -112,7 +112,12 @@ app.post('/process-login', (req, res) => {
 });
 
 app.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.log(err);
+    }
   res.render('index.html');
+});
 });
 
 app.get('/back-to-shop', (req, res) => {
