@@ -1,3 +1,8 @@
+body {
+  background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
 
 div.navbar-header img {
   width: 30px;
@@ -5,6 +10,7 @@ div.navbar-header img {
   margin-top: 7px;
   margin-right: 7px;
 }
+
 
 div.summary img {
   width: 15em;
@@ -19,10 +25,18 @@ div.summary img {
 /* login form */
 
 .form-signin {
-  max-width: 330px;
-  margin: 5em auto 0 auto; /* TRBL */
+  max-width: 530px;
+  margin: 10em auto 0 auto; /* TRBL */
+  margin-top: 20px;
 }
 
 #invalid-message{
   color: red;
+}
+
+/*cart*/
+
+tbody{
+  background: white;
+  opacity: 0.5;
 }
