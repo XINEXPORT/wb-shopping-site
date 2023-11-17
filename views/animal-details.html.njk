@@ -1,6 +1,7 @@
 {% extends 'base.html.njk' %}
 
 {% block body %}
+<div>
 <h2 id = "animal-name">{{ animal.name }}</h2>
 
 <div id = "animal-pic"><img src="{{ animal.image_url }}" /></div>
@@ -16,6 +17,7 @@
 </ul>
 
 <a class="btn btn-primary" href="/add-to-cart/{{ animal.animal_id }}">Add to cart</a>
+</div>
 </div>
 
 {% endblock %}

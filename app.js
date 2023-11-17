@@ -36,8 +36,6 @@ app.get('/animal-details/:animalId', (req, res) => {
 
 });
 
-
-app.get('/add-to-cart/:animalId', (req, res) => {
   // TODO: Finish add to cart functionality
   // The logic here should be something like:
   // - check if a "cart" exists in the session, and create one (an empty
@@ -45,6 +43,9 @@ app.get('/add-to-cart/:animalId', (req, res) => {
   // - check if the desired animal id is in the cart, and if not, put it in
   // - increment the count for that animal id by 1
   // - redirect the user to the cart page
+
+app.get('/add-to-cart/:animalId', (req, res) => {
+
 let {animalId} = req.params
 let sess = req.session;
 
@@ -62,8 +63,8 @@ if (!sess.cart[animalId]){
   res.redirect('/cart');
 });
 
-//   // TODO: Display the contents of the shopping cart.
-//   // The logic here will be something like:
+//   TODO: Display the contents of the shopping cart.
+//   The logic here will be something like:
 
 app.get('/cart', (req, res) => {
   let sess = req.session;
@@ -96,11 +97,10 @@ console.log("/cart hit");
   res.render('cart.html.njk', {arrAnimals, cartTotal});
 });
 
-
 app.get('/checkout', (req, res) => {
   // Empty the cart.
   req.session.cart = {};
-  res.redirect('/all-animals');
+  res.render('/cofirmation.html.njk');
 });
 
 app.get('/login', (req, res) => {

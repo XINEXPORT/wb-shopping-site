@@ -24,10 +24,14 @@ div.summary img {
 /*All-Animals Page*/
 
 .card{
+  height: 350px;
+  border: 1.5px solid #000;
+  border-radius: 10px;
+  display: flex;
   flex-direction: row;
   align-items: stretch;
   align-content: stretch;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 #stuffed-animals{
@@ -99,6 +103,7 @@ div.summary img {
 
 #invalid-message{
   color: red;
+  text-align: center;
 }
 
 /*cart*/
@@ -118,4 +123,11 @@ th, td{
 
 tr{
   background-color: white;
+}
+
+/*Confirmation*/
+
+#container{
+  max-width: 800px;
+  margin: auto;
 }
